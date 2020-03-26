@@ -15,6 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="OpP-1D-oGk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Lc-GO-2bo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
@@ -82,9 +85,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0Lc-GO-2bo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DNI-dy-zKm"/>
+                            <constraint firstItem="OpP-1D-oGk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FNi-cZ-rfz"/>
+                            <constraint firstItem="OpP-1D-oGk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RCw-aH-zex"/>
                             <constraint firstItem="0Lc-GO-2bo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="agZ-GP-ozK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Lc-GO-2bo" secondAttribute="trailing" id="hgD-yX-dRG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OpP-1D-oGk" secondAttribute="bottom" id="xeQ-qt-noF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Lc-GO-2bo" secondAttribute="bottom" id="xvv-I2-wCr"/>
+                            <constraint firstItem="OpP-1D-oGk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="z3Z-6V-Bcf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -96,6 +103,7 @@
     </scenes>
     <resources>
         <image name="articuno" width="309" height="350"/>
+        <image name="bg" width="1000" height="1000"/>
         <image name="microphone" width="64" height="64"/>
     </resources>
 </document>
