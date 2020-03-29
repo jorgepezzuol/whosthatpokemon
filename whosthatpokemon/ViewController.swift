@@ -8,6 +8,7 @@
 
 import UIKit
 import Speech
+import AVFoundation
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -37,6 +38,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var lblPokemonName: UILabel!
     
     var urlImgPokemon: String?
+    var player: AVAudioPlayer?
     
     /* speech stuff */
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
@@ -51,8 +53,26 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     }
     
-    
-    
+    @IBAction func dontKnow(_ sender: UIButton) {
+        
+        guard let name = self.lblPokemonName.text?.lowercased() else { return }
+        
+        self.lblPokemonName.text = "it's \(name)!"
+        self.lblPokemonName.isHidden = false
+        
+        let url = URL(string: self.urlImgPokemon!)
+        let data = try? Data(contentsOf: url!)
+        self.imgPokemon.image = UIImage(data: data!)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
+            self.lblPokemonName.isHidden = true
+            
+            self.fetchAPI(pokemon: Int.random(in: 0 ... 150))
+        }
+        
+    }
     
     override func viewDidLoad() {
         
@@ -63,9 +83,15 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         self.lblPokemonName.isHidden = true
         
-        fetchAPI(pokemon: Int.random(in: 0 ... 50))
-        
+        fetchAPI(pokemon: Int.random(in: 0 ... 150))
                 
+    }
+    
+    func playSound(soundName: String) {
+        let url = Bundle.main.url(forResource: soundName, withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player!.play()
+        
     }
     
     func checkName() {
@@ -89,7 +115,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                         self.lblPokemonName.isHidden = true
                         
-                        self.fetchAPI(pokemon: Int.random(in: 0 ... 50))
+                        self.fetchAPI(pokemon: Int.random(in: 0 ... 150))
                     }
                     
                 }
@@ -100,6 +126,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func fetchAPI(pokemon: Int) {
         
+        self.playSound(soundName: "whosthatpokemon")
+        
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(pokemon)/") else { return }
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             // make sure to check error / resp
@@ -107,7 +135,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             DispatchQueue.main.async {
                 do {
                     guard let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: AnyObject] else { return }
-                    
+                                        
                     self.lblPokemonName.text = (json["name"] as! String)
                                     
                     let url = URL(string: json["sprites"]!["front_default"] as! String)

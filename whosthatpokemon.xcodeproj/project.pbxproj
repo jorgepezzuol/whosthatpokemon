@@ -13,6 +13,9 @@
 		739B91F2242C25EC00BCC690 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 739B91F0242C25EC00BCC690 /* Main.storyboard */; };
 		739B91F4242C25EF00BCC690 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 739B91F3242C25EF00BCC690 /* Assets.xcassets */; };
 		739B91F7242C25EF00BCC690 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 739B91F5242C25EF00BCC690 /* LaunchScreen.storyboard */; };
+		739D004924310F730010ED3C /* Pokemon Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 739D004824310F730010ED3C /* Pokemon Solid.ttf */; };
+		739D004B24310FAA0010ED3C /* Pokemon Hollow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 739D004A24310FAA0010ED3C /* Pokemon Hollow.ttf */; };
+		73E7E62A243128FF001A3278 /* whosthatpokemon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 73E7E629243128FF001A3278 /* whosthatpokemon.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		739B91F3242C25EF00BCC690 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		739B91F6242C25EF00BCC690 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		739B91F8242C25EF00BCC690 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		739D004824310F730010ED3C /* Pokemon Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pokemon Solid.ttf"; sourceTree = "<group>"; };
+		739D004A24310FAA0010ED3C /* Pokemon Hollow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pokemon Hollow.ttf"; sourceTree = "<group>"; };
+		73E7E629243128FF001A3278 /* whosthatpokemon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = whosthatpokemon.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +68,10 @@
 				739B91F0242C25EC00BCC690 /* Main.storyboard */,
 				739B91F3242C25EF00BCC690 /* Assets.xcassets */,
 				739B91F5242C25EF00BCC690 /* LaunchScreen.storyboard */,
+				739D004824310F730010ED3C /* Pokemon Solid.ttf */,
+				739D004A24310FAA0010ED3C /* Pokemon Hollow.ttf */,
 				739B91F8242C25EF00BCC690 /* Info.plist */,
+				73E7E629243128FF001A3278 /* whosthatpokemon.mp3 */,
 			);
 			path = whosthatpokemon;
 			sourceTree = "<group>";
@@ -125,7 +134,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E7E62A243128FF001A3278 /* whosthatpokemon.mp3 in Resources */,
 				739B91F7242C25EF00BCC690 /* LaunchScreen.storyboard in Resources */,
+				739D004924310F730010ED3C /* Pokemon Solid.ttf in Resources */,
+				739D004B24310FAA0010ED3C /* Pokemon Hollow.ttf in Resources */,
 				739B91F4242C25EF00BCC690 /* Assets.xcassets in Resources */,
 				739B91F2242C25EC00BCC690 /* Main.storyboard in Resources */,
 			);
