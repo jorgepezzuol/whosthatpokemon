@@ -21,10 +21,22 @@ extension UIViewController {
     }
 }
 
+extension UIImageView {
+  func setImageColor(color: UIColor) {
+    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+    self.image = templateImage
+    self.tintColor = color
+  }
+}
+
 class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var tfPokemonName: UITextField!
     @IBOutlet weak var btnMic: UIButton!
+    @IBOutlet weak var imgPokemon: UIImageView!
+    @IBOutlet weak var lblPokemonName: UILabel!
+    
+    var urlImgPokemon: String?
     
     /* speech stuff */
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
@@ -33,9 +45,88 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
     /* end speech stuff */
     
+    @IBAction func pokemonNameTyped(_ sender: Any) {
+        
+        self.checkName()
+
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         self.hideKeyboardWhenTappedAround()
+        self.enableSpeech()
+        
+        self.lblPokemonName.isHidden = true
+        
+        fetchAPI(pokemon: Int.random(in: 0 ... 50))
+        
+                
+    }
+    
+    func checkName() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        
+            guard let name = self.tfPokemonName.text?.lowercased() else { return }
+
+            if name.count >= 3 {
+                
+                if name == self.lblPokemonName.text {
+                    
+                    self.lblPokemonName.text = "it's \(name)!"
+                    self.lblPokemonName.isHidden = false
+                    
+                    let url = URL(string: self.urlImgPokemon!)
+                    let data = try? Data(contentsOf: url!)
+                    self.imgPokemon.image = UIImage(data: data!)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        
+                        self.lblPokemonName.isHidden = true
+                        
+                        self.fetchAPI(pokemon: Int.random(in: 0 ... 50))
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    
+    func fetchAPI(pokemon: Int) {
+        
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(pokemon)/") else { return }
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            // make sure to check error / resp
+            
+            DispatchQueue.main.async {
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: AnyObject] else { return }
+                    
+                    self.lblPokemonName.text = (json["name"] as! String)
+                                    
+                    let url = URL(string: json["sprites"]!["front_default"] as! String)
+                    let data = try? Data(contentsOf: url!)
+                    self.imgPokemon.image = UIImage(data: data!)
+                    self.urlImgPokemon = (json["sprites"]!["front_default"] as! String)
+                    
+                    self.imgPokemon.setImageColor(color: UIColor.black)
+                    
+                } catch {
+                    print("Failed to decode JSON:", error)
+                }
+            }
+            
+        }.resume()
+    }
+       
+
+    func enableSpeech() {
         
         btnMic.isEnabled = false
 
@@ -68,6 +159,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.btnMic.isEnabled = isButtonEnabled
             }
         }
+        
     }
     
     @IBAction func microphoneTapped(_ sender: AnyObject) {
@@ -117,6 +209,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
                 self.tfPokemonName.text = result?.bestTranscription.formattedString  //9
                 isFinal = (result?.isFinal)!
+                
+                self.checkName()
             }
 
             if error != nil || isFinal {  //10
