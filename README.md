@@ -13,7 +13,7 @@
 
 ## General info
 Learning the UIKit before going straight to SwiftUI also learning the basics as http request,
-external APIs, audio player, etc
+external APIs, audio player, etc. This app uses https://pokeapi.co/ :)
 
 ## Screenshots
 ![Main Screen](./img/gif-whosthatpokemon.gif)
