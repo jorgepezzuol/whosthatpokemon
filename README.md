@@ -8,7 +8,6 @@
 * [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
-* [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
@@ -33,4 +32,4 @@ Just clone and open in Xcode, then run
 Project is: finished
 
 ## Contact
-Created by [@jorgepezzuol](https://www.linkedin.com/in/jorge-pezzuol/) - feel free to contact me!
+Created by [@jorgepezzuol](https://www.linkedin.com/in/jorge-pezzuol/)
