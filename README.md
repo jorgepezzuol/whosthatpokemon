@@ -17,7 +17,6 @@ external APIs, audio player, etc. This app uses https://pokeapi.co/ :)
 
 ## Screenshots
 ![Main Screen](./img/gif-whosthatpokemon.gif)
-![Main Screen](./img/whosthatpokemon.jpeg)
 
 ## Technologies
 * Xcode 11
