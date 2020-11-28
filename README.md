@@ -16,7 +16,7 @@ Learning the UIKit before going straight to SwiftUI also learning the basics as 
 external APIs, audio player, etc. This app uses https://pokeapi.co/ :)
 
 ## Screenshots
-![Main Screen](./img/gif-whosthatpokemon.gif)
+<img src="./img/gif-whosthatpokemon.gif" width="30%" height="30%"/>
 
 ## Technologies
 * Xcode 11
